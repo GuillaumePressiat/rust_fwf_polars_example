@@ -138,5 +138,21 @@ mean                 97.26 ms   (95.58 ms .. 99.10 ms)
 std dev              2.838 ms   (1.982 ms .. 3.961 ms)
 ```
 
+## Rust 1.80
 
+### 2/ no problem with rust 1.80
+
+On my mac silicon, I've installed rust 1.80 nightly and it runs in correct times:
+
+```sh
+# nightly-2024-06-07-aarch64-apple-darwin installed - rustc 1.80.0-nightly (98489f248 2024-06-06)
+cargo +nightly-2024-06-07 build --release
+% bench ./target/release/rust_fwf_polars
+benchmarking ./target/release/rust_fwf_polars
+time                 42.37 ms   (40.73 ms .. 43.81 ms)
+                     0.996 R²   (0.992 R² .. 0.998 R²)
+mean                 43.12 ms   (41.77 ms .. 46.17 ms)
+std dev              3.807 ms   (1.810 ms .. 6.321 ms)
+variance introduced by outliers: 34% (moderately inflated)
+```
 
