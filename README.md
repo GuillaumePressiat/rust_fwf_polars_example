@@ -156,3 +156,27 @@ std dev              3.807 ms   (1.810 ms .. 6.321 ms)
 variance introduced by outliers: 34% (moderately inflated)
 ```
 
+## Regression between 21/06 and 22/06 nightly builds?
+
+```sh
+# rustup install nightly-2024-06-22
+cargo +nightly-2024-06-22 run --release 
+% bench ./target/release/rust_fwf_polars   
+benchmarking ./target/release/rust_fwf_polars
+time                 94.54 ms   (82.58 ms .. 105.6 ms)
+                     0.970 R²   (0.916 R² .. 0.994 R²)
+mean                 100.5 ms   (92.48 ms .. 113.0 ms)
+std dev              16.04 ms   (10.54 ms .. 21.82 ms)
+variance introduced by outliers: 53% (severely inflated)
+
+# rustup install nightly-2024-06-21
+cargo +nightly-2024-06-22 run --release 
+% bench ./target/release/rust_fwf_polars 
+benchmarking ./target/release/rust_fwf_polars
+time                 42.77 ms   (41.82 ms .. 43.96 ms)
+                     0.997 R²   (0.994 R² .. 0.999 R²)
+mean                 42.45 ms   (41.52 ms .. 43.25 ms)
+std dev              1.729 ms   (1.277 ms .. 2.614 ms)
+variance introduced by outliers: 13% (moderately inflated)
+```
+
