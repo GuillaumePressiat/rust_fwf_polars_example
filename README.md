@@ -19,8 +19,9 @@ The file is in `data`. It's a fixed widths file of 500k rows.
 ## Summary
 
 With the exact same code parsing of file and takes:
-	- ~42ms with Rust 1.79
-	- ~97ms with Rust 1.81
+
+	- ~ 42ms with Rust 1.79
+	- ~ 97ms with Rust 1.81
 
 I observe longer run time with rust 1.81 than rust 1.79 which is concentrated on this polars expression vector:
 
