@@ -1,4 +1,4 @@
-# rust_fwf_polars_example
+# Slower parsing of a file in Rust 1.81?
 
 ## Sample code to illustrate a difference in behaviour between rust 1.79 and rust 1.81 with polars expression
 
