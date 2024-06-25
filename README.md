@@ -18,7 +18,7 @@ The file is in `data`. It's a fixed widths file of 500k rows.
 
 ## Summary
 
-With the exact same code parsing of file it takes:
+With the exact same code parsing of file takes:
 
 - ~ 42ms with Rust 1.79
 - ~ 97ms with Rust 1.81
