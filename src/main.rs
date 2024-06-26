@@ -7,6 +7,8 @@ pub fn main() {
             .slice(lit(0), lit(9))
             .cast(DataType::Int32)
             .alias("col_1"),
+        // (col("l").str().slice(lit(0), lit(9)).cast(DataType::Int32) * lit(4)).alias("col_1m4"),
+        // (col("l").str().slice(lit(0), lit(9)).cast(DataType::Int32) * lit(10)).alias("col_1m10"),
         col("l").str().slice(lit(9), lit(10)).alias("col_2"),
         col("l").str().slice(lit(19), lit(6)).alias("col_3"),
         col("l").str().slice(lit(25), lit(40)).alias("col_4"),
