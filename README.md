@@ -1,5 +1,8 @@
 # Slower parsing of a file in Rust 1.81?
 
+Repo support for issue:
+https://github.com/rust-lang/rust/issues/126937
+
 ## Sample code to illustrate a difference in behaviour between rust 1.79 and rust 1.81 with polars expression
 
 
