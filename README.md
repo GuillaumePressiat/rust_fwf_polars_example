@@ -1,5 +1,8 @@
 # Slower parsing of a file in Rust 1.81?
 
+Repo support for issue:
+https://github.com/rust-lang/rust/issues/126937
+
 ## Sample code to illustrate a difference in behaviour between rust 1.79 and rust 1.81 with polars expression
 
 
@@ -18,10 +21,12 @@ The file is in `data`. It's a fixed widths file of 500k rows.
 
 ## Summary
 
-With the exact same code parsing of file and takes:
+With the exact same code parsing of file takes:
 
 - ~ 42ms with Rust 1.79
 - ~ 97ms with Rust 1.81
+
+On a mac M2 pro.
 
 I observe longer run time with rust 1.81 than rust 1.79 which is concentrated on this polars expression vector:
 
@@ -136,5 +141,45 @@ mean                 97.26 ms   (95.58 ms .. 99.10 ms)
 std dev              2.838 ms   (1.982 ms .. 3.961 ms)
 ```
 
+## Rust 1.80
 
+### 2/ no problem with rust 1.80
+
+On my mac silicon, I've installed rust 1.80 nightly and it runs in correct times:
+
+```sh
+# nightly-2024-06-07-aarch64-apple-darwin installed - rustc 1.80.0-nightly (98489f248 2024-06-06)
+cargo +nightly-2024-06-07 build --release
+% bench ./target/release/rust_fwf_polars
+benchmarking ./target/release/rust_fwf_polars
+time                 42.37 ms   (40.73 ms .. 43.81 ms)
+                     0.996 R²   (0.992 R² .. 0.998 R²)
+mean                 43.12 ms   (41.77 ms .. 46.17 ms)
+std dev              3.807 ms   (1.810 ms .. 6.321 ms)
+variance introduced by outliers: 34% (moderately inflated)
+```
+
+## Regression between 21/06 and 22/06 nightly builds?
+
+```sh
+# rustup install nightly-2024-06-22
+cargo +nightly-2024-06-22 run --release 
+% bench ./target/release/rust_fwf_polars   
+benchmarking ./target/release/rust_fwf_polars
+time                 94.54 ms   (82.58 ms .. 105.6 ms)
+                     0.970 R²   (0.916 R² .. 0.994 R²)
+mean                 100.5 ms   (92.48 ms .. 113.0 ms)
+std dev              16.04 ms   (10.54 ms .. 21.82 ms)
+variance introduced by outliers: 53% (severely inflated)
+
+# rustup install nightly-2024-06-21
+cargo +nightly-2024-06-21 run --release 
+% bench ./target/release/rust_fwf_polars 
+benchmarking ./target/release/rust_fwf_polars
+time                 42.77 ms   (41.82 ms .. 43.96 ms)
+                     0.997 R²   (0.994 R² .. 0.999 R²)
+mean                 42.45 ms   (41.52 ms .. 43.25 ms)
+std dev              1.729 ms   (1.277 ms .. 2.614 ms)
+variance introduced by outliers: 13% (moderately inflated)
+```
 
