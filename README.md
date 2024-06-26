@@ -170,7 +170,7 @@ std dev              16.04 ms   (10.54 ms .. 21.82 ms)
 variance introduced by outliers: 53% (severely inflated)
 
 # rustup install nightly-2024-06-21
-cargo +nightly-2024-06-22 run --release 
+cargo +nightly-2024-06-21 run --release 
 % bench ./target/release/rust_fwf_polars 
 benchmarking ./target/release/rust_fwf_polars
 time                 42.77 ms   (41.82 ms .. 43.96 ms)
