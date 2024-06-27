@@ -186,7 +186,7 @@ variance introduced by outliers: 13% (moderately inflated)
 ### Analysis of what is slow
 
 
-!img[](assets/image1.png)
+![](assets/image1.png)
 
 To pin down which column leads to the regression and know the dtype involved if there is one specific.
 
@@ -209,10 +209,10 @@ whereas if I multiply col_1 by a litteral (4 or 10), the cost is lower
 col_1 and col_1m4 col_1 * lit(4) : 33ms
 col_1 and col_1m4 and col_1m10, col_1 * lit(10) : 35ms
 ```
-!img[](assets/image2.png)
+![](assets/image2.png)
 
 Done all of this with nightly build before regression:
 
-!img[](assets/image3.png)
+![](assets/image3.png)
 
 
