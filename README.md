@@ -215,4 +215,7 @@ Done all of this with nightly build before regression:
 
 ![](assets/image3.png)
 
+Measures are in microseconds.
+In both case (integer or string), the cost of adding a new column is bigger in regression 06/22 compared to 06/21.
+
 
