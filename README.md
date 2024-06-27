@@ -183,3 +183,36 @@ std dev              1.729 ms   (1.277 ms .. 2.614 ms)
 variance introduced by outliers: 13% (moderately inflated)
 ```
 
+### Analysis of what is slow
+
+
+!img[](assets/image1.png)
+
+To pin down which column leads to the regression and know the dtype involved if there is one specific.
+
+```bash
+# So I did it: timings are done with bench)
+# Just l (no slice expressions) : 11ms
+l + col_1 : col_1 > Int32 : 27ms
+l + col_1 + col_2 : col_2 > String : 39ms
+l + col_1 + col_2 + col_3 : col_3 String : 50ms
+l + col_1 + col_2 + col_3 + col_4 : col_4 String : 60ms
+l + col_1 + col_2 + col_3 + col_4 + col_5 + col_6 : String : 70ms
+....
+l + col_1 + col_2 + col_3 + col_4 + col_5 + ... + col_11 : String : 94ms
+```
+the cost of slices is important
+
+whereas if I multiply col_1 by a litteral (4 or 10), the cost is lower
+
+```bash
+col_1 and col_1m4 col_1 * lit(4) : 33ms
+col_1 and col_1m4 and col_1m10, col_1 * lit(10) : 35ms
+```
+!img[](assets/image2.png)
+
+Done all of this with nightly build before regression:
+
+!img[](assets/image3.png)
+
+
