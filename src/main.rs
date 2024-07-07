@@ -2,24 +2,24 @@ pub fn main() {
     use polars::prelude::*;
 
     let mut _vec_expr = [
-        // col("one")
-        //     .str()
-        //     .slice(lit(0), lit(9))
-        //     .cast(DataType::Int32)
-        //     .alias("col_1"),
-        (col("one") * lit(4)).alias("col_1m4"),
-        (col("one") * lit(10)).alias("col_1m10"),
-        (col("one") * lit(100000)).alias("col_1m100000"),
+        col("l")
+            .str()
+            .slice(lit(0), lit(9))
+            .cast(DataType::Int32)
+            .alias("one"),
+        // (col("one") * lit(4)).alias("col_1m4"),
+        // (col("one") * lit(10)).alias("col_1m10"),
+        // (col("one") * lit(100000)).alias("col_1m100000"),
         // col("l").str().slice(lit(9), lit(10)).alias("col_2"),
         // col("l").str().slice(lit(19), lit(6)).alias("col_3"),
         // col("l").str().slice(lit(25), lit(40)).alias("col_4"),
-        col("four").str().slice(lit(0), lit(0)).alias("col_5"),
-        col("four").str().slice(lit(1), lit(1)).alias("col_6"),
-        col("four").str().slice(lit(2), lit(1)).alias("col_7"),
-        col("four").str().slice(lit(3), lit(1)).alias("col_8"),
-        col("four").str().slice(lit(4), lit(1)).alias("col_9"),
-        col("four").str().slice(lit(5), lit(1)).alias("col_10"),
-        col("four").str().slice(lit(6), lit(1)).alias("col_11"),
+        col("l").str().slice(lit(25), lit(1)).alias("col_5"),
+        col("l").str().slice(lit(26), lit(1)).alias("col_6"),
+        col("l").str().slice(lit(27), lit(1)).alias("col_7"),
+        col("l").str().slice(lit(28), lit(1)).alias("col_8"),
+        col("l").str().slice(lit(29), lit(1)).alias("col_9"),
+        col("l").str().slice(lit(30), lit(1)).alias("col_10"),
+        col("l").str().slice(lit(31), lit(1)).alias("col_11"),
     ];
 
     println!("{:?}", _vec_expr);
