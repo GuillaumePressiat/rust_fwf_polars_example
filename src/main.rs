@@ -45,7 +45,7 @@ pub fn main() {
     let data_ = data_
         .with_columns([col("l")
             .str()
-            .extract_groups(r"^(?<col_1>.{9})(?<col_2>.{10})(?<col_3>.{6})(?<col_4>.*)")
+            .extract_groups(r"^(?<col_1>.{9})(?<col_2>.{10})(?<col_3>.{6})(?<col_5>.{1})(?<col_6>.{1})(?<col_7>.{1})(?<col_8>.{1})(?<col_9>.{1})(?<col_10>.{1})(?<col_11>.{1})(?<col_12>.*)")
             .unwrap()])
         .unnest(["l"].into_iter());
 
